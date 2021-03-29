@@ -11,6 +11,7 @@ function quickSort(array) {
     const randomIndex =  Math.floor(Math.random() * array.length);
     const pivot = array[randomIndex];
     const remaining = array.filter((e, i) => i !== randomIndex);
+
     //divide and conquer
     const less = remaining.filter(e => e <= pivot);
     const greater = remaining.filter(e => e > pivot);
