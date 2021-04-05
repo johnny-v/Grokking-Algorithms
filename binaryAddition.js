@@ -1,36 +1,30 @@
-const a = ['11001', '11011'];
-const b = ['01100', '00011'];
+const a = [1,1,0,0,1];
+const b = [0,1,1,0,0];
 
 function addBinaries(a, b) {
-    const result = [];
+    let i = a.length - 1;
+    const binaryNumber = [];
+    let carry = 0;
 
-    for (let j = 0; j < a.length; j++) {
-        let i = a[j].length - 1;
-        let binaryNumber = '';
-        let carry = 0;
+    while (i >= 0) {
+        let sum = +a[i] + +b[i] + carry;
 
-        while (i >= 0) {
-            let sum = +a[j][i] + +b[j][i] + carry;
-
-            if (sum > 1) {
-                sum = sum % 2;
-                carry = 1;
-            } else {
-                carry = 0;
-            }
-
-            binaryNumber += sum;
-            i--;
+        if (sum > 1) {
+            sum = sum % 2;
+            carry = 1;
+        } else {
+            carry = 0;
         }
 
-        if (carry) {
-            binaryNumber = result + carry;
-        }
-
-        result.push(binaryNumber);
+        binaryNumber.push(sum);
+        i--;
     }
 
-    return result;
+    if (carry) {
+        binaryNumber.push(carry);
+    }
+
+    return binaryNumber;
 }
 
 console.log(addBinaries(a, b));
